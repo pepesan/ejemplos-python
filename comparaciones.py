@@ -4,7 +4,7 @@ a = 21
 b = 10
 
 if ( a == b ):
-   print ("Line 1 - a is equal to b")
+   print ("a es igual a b")
 else:
    print ("Line 1 - a is not equal to b")
 
@@ -34,3 +34,13 @@ if ( b >= a ):
    print ("Line 6 - b is either greater than  or equal to b")
 else:
    print ("Line 6 - b is neither greater than  nor equal to b")
+
+if ( b is a ):
+   print ("b es a")
+else:
+   print ("b no es a")
+
+if ( b is not a ):
+   print ("b no es a")
+else:
+   print ("b es a")
