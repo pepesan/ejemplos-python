@@ -8,7 +8,7 @@ if re.search("cat","A cat and a rat can't be friends."):
 else:
     print ("No cat has been found :-(")
 
-if re.search("c[aeuio]t]","A cat and a rat can't be friends."):
+if re.search("c[aeuio]t","A cat and a rat can't be friends."):
     print ("Some kind of c[vocal]t has been found :-)")
 else:
     print ("No c[vocal]t has been found :-(")

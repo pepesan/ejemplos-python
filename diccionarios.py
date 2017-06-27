@@ -15,5 +15,5 @@ dict.clear()     # remove all entries in dict
 del dict       # delete entire dictionary
 
 
-dict = {['Name']: 'Zara', 'Age': 7}
+dict = {'Name': 'Zara', 'Age': 7}
 print (len(dict))
