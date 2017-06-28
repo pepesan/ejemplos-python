@@ -3,6 +3,8 @@
 #importamos el módulo de expresiones regulares
 import re
 
+"""Expresiones
+Regulares"""
 if re.search("cat","A cat and a rat can't be friends."):
     print ("Some kind of cat has been found :-)")
 else:
