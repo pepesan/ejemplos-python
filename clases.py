@@ -4,6 +4,52 @@ class ClassName:
 
 obj= ClassName()
 
+class Employee:
+    'Clase que maneja los datos de un empleado'
+    #comenatrio
+    def __init__(self):
+        self.name=""
+        self.salary=0
+
+jorge=Employee()
+print(jorge.name)
+jorge.name="Jorge"
+print(jorge.name)
+jorge.salary=45000
+print(jorge.salary)
+
+
+class Employee:
+    'Clase que maneja los datos de un empleado'
+    #comenatrio
+    def __init__(self, name="",salary=0):
+        self.name=name
+        self.salary=salary
+
+isabel=Employee()
+print(isabel.salary)
+isabel=Employee(salary=60000)
+print(isabel.salary)
+isabel=Employee(name="Isabel")
+print(isabel.name)
+isabel=Employee("Isabel",60000)
+print(isabel.name)
+print(isabel.salary)
+
+class Employee:
+    'Clase que maneja los datos de un empleado'
+    #comenatrio
+    def __init__(self, name="",salary=0):
+        self.name=name
+        self.salary=salary
+
+    def incSalary(self,valor):
+        self.salary+=valor
+
+maria=Employee(name="Maria",salary=75000)
+maria.incSalary(10000)
+print(maria.salary)
+
 
 class Employee:
     'Common base class for all employees'
@@ -152,4 +198,6 @@ class JustCounter:
 counter = JustCounter()
 counter.count()
 counter.count()
-print (counter.__secretCount)
+#print (counter.__secretCount)
+
+
