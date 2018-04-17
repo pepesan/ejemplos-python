@@ -14,7 +14,7 @@ input_data = [[170,56,1], # Mujer de 1.70m y 56kg
               [165,54,1]]# Mujer de 1.65m y 54kg
 
 ## Creamos el perceptron
-pr = Perceptron(3,0.1) # Perceptron con 3 entradas
+pr = Perceptron(3) # Perceptron con 3 entradas
 weights = [] # Lista con los pesos
 errors = []  # Lista con los errores
 

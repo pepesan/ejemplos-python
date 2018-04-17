@@ -201,3 +201,80 @@ counter.count()
 #print (counter.__secretCount)
 
 
+class Cliente:
+    ""
+    totalCotizaciones = 0
+
+    def __init__(self,nombre="",direccion="",email="",tlf="",cotizacion=0):
+        self.nombre=nombre
+        self.direccion=direccion
+        self.email=email
+        self.tlf=tlf
+        self.cotizacion=cotizacion
+
+    def setCotizacion(self,cotizacion):
+        self.cotizacion=cotizacion
+        self.totalCotizaciones+=cotizacion
+
+    def toString(self):
+        return "Cliente[nombre:"+self.nombre+"]"
+
+
+indra=Cliente()
+indra.setCotizacion(20000)
+print(indra.cotizacion)
+telefonica=Cliente(nombre="Telefónica")
+print(telefonica.nombre)
+print(telefonica.toString())
+
+
+class Figuras(object):
+    __slots__ = ('dim1', 'dim2')
+
+    def __init__(self, dim1, dim2):
+        self.dim1 = dim1
+        self.dim2 = dim2
+
+    def area(self):
+        print(('El área de la figura no esta definida.'))
+
+
+class Rectangulo(Figuras):
+    def __init__(self, dim1, dim2):
+        super().__init__(dim1, dim2)
+
+    def area(self):
+        if self.dim1 != self.dim2:
+            print(('El área del rectángulo es: '))
+        else:
+            print(('El área del cuadrado es:'))
+        return (self.dim1 * self.dim2)
+
+    def perimetro(self):
+        print(('El perímetro del rectángulo es: '))
+        return (2 * self.dim1 + 2 * self.dim2)
+
+def main():
+    F = Figuras(10, 10)
+    R = Rectangulo(9, 5)
+
+
+main()
+
+class Persona:
+    def __init__(self, nombre=""):
+        self.nombre=nombre
+
+class Empleado(Persona):
+    def __init__(self, nombre="",sueldo=0):
+        super().__init__(nombre)
+        self.sueldo=sueldo
+
+perso=Persona("personita")
+emp1=Empleado(nombre="Juan",sueldo=65000)
+
+print(perso.nombre)
+print(emp1.sueldo)
+print(emp1.nombre)
+
+emp2=Empleado()

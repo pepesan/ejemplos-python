@@ -10,9 +10,10 @@ tup1 = ('physics', 'chemistry', 1997, 2000)
 tup2 = (1, 2, 3, 4, 5, 6, 7)
 
 print (tup1[0])
-print (tup2[1:5])
+print (tup1[3])
+print (tup2[1:3])
 
-tup1 = (12, 34.56)
+tup1 = (12, 34.56,True)
 tup2 = ('abc', 'xyz')
 
 # Following action is not valid for tuples
