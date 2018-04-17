@@ -9,24 +9,26 @@ if ( var  == 100 ) : print ("Value of expression is 100")
 print ("Good bye!")
 
 
-var1 = 100
+var1 = False
 if var1:
    print ("1 - Got a true expression value")
    print (var1)
 
+print("fuera del if")
+
 var2 = 0
 if var2:
-   print ("2 - Got a true expression value")
+   print ("2 - The var exists")
    print (var2)
 
 
 
 var1 = 100
 if var1:
-   print ("1 - Got a true expression value")
+   print ("1 - The var exists")
    print (var1)
 else:
-   print ("1 - Got a false expression value")
+   print ("1 - The var not exists")
    print (var1)
 
 var2 = 0
@@ -60,15 +62,17 @@ if var < 200:
       print ("Which is 100")
    elif var == 50:
       print ("Which is 50")
-elif var < 50:
-   print ("Expression value is less than 50")
+   else:
+      print("No es ni 150, ni 100, ni 50, pero es menor a 200")
+elif var > 200:
+   print ("Expression value greater than 200")
 else:
-   print ("Could not find true expression")
+   print ("Expression value is 200")
 
 count = 1
 while (count < 9):
    print ('The count is:', count)
-   count = count + 1
+   count = count +1
 
 
 count = 0
@@ -85,11 +89,16 @@ fruits = ['banana', 'apple',  'mango']
 for fruit in fruits:        # Second Example
     print ('Current fruit :', fruit)
 
+fruits = ['banana', 'apple', 'mango']
+for index in range(len(fruits)):
+   print('Current fruit :', fruits[index])
+
 fruits = ['banana', 'apple',  'mango']
 for index in range(len(fruits)):
-   print ('Current fruit :', fruits[index])
+   print ('Fruit at position:',index,' :', fruits[index])
 
-for num in range(10,20):  #to iterate between 10 to 20
+# Código que busca números primos, si no es primo te dice porqué
+for num in range(2,20):  #to iterate between 10 to 20
    for i in range(2,num): #to iterate on the factors of the number
       if num%i == 0:      #to determine the first factor
          j=num/i          #to calculate the second factor

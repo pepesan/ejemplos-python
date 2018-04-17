@@ -8,6 +8,9 @@ print ("dict['Age']: ", dict['Age'])
 
 dict['Age'] = 8 # update existing entry
 dict['School'] = "DPS School" # Add new entry
+dict['Last Name']="Petterson"
+
+print (dict['Last Name'])
 
 for nombre in dict:
     print(dict[nombre])
@@ -15,7 +18,9 @@ for nombre in dict:
 
 
 del dict['Name'] # remove entry with key 'Name'
+print (dict)
 dict.clear()     # remove all entries in dict
+print (dict)
 del dict       # delete entire dictionary
 
 
