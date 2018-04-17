@@ -25,7 +25,7 @@ print (list1)
 
 
 Celsius = [39.2, 36.5, 37.3, 37.8]
-Fahrenheit = [ ((float(9)/5)*x + 32) for x in Celsius ]
+Fahrenheit = [ ((float(9)/5)*item + 32) for item in Celsius ]
 print(Fahrenheit)
 
 
@@ -35,3 +35,10 @@ print(mitupla)
 
 mi_listado=[ x for x in range(1,51)]
 print(mi_listado)
+
+listado=[1, 2, 3]
+for x in listado:
+    print (x)
+
+if( 3 in listado):
+    print ("Está vivo!!!!!")

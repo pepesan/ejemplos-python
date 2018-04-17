@@ -27,6 +27,6 @@ print (tup3[0])
 tup = ('physics', 'chemistry', 1997, 2000);
 
 print (tup)
-del tup;
+del tup
 print ("After deleting tup : ")
 #print (tup)
