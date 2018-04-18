@@ -17,6 +17,10 @@ list[2] = 2001
 print ("New value available at index 2 : ")
 print (list[2])
 
+x = [1, 2, 3]
+x.append(4)
+print (x)
+
 
 print (list1)
 del (list1[2])
