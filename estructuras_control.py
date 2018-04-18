@@ -97,6 +97,15 @@ fruits = ['banana', 'apple',  'mango']
 for index in range(len(fruits)):
    print ('Fruit at position:',index,' :', fruits[index])
 
+
+fruits = ('banana', 'apple', 'mango')
+for index in range(len(fruits)):
+   print('Tupla: Elemento :', fruits[index])
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+for nombre in dict:
+      print("",dict[nombre])
+
 # Código que busca números primos, si no es primo te dice porqué
 for num in range(2,20):  #to iterate between 10 to 20
    for i in range(2,num): #to iterate on the factors of the number
