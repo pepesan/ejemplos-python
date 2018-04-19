@@ -3,9 +3,14 @@
 
 def suma(x, y):
     """Devuelve x + y"""
+    print("x:",x)
+    print("y:", y)
     return x + y
 
 res=suma(2,3)
+print("Resultado: ",res)
+
+res=suma(4,9)
 print(res)
 
 res=suma (2,y=3)
@@ -18,7 +23,8 @@ res=suma (y=3,x=2)
 print(res)
 
 
-def resta(x, y=5):
+
+def resta(x, y=1):
     """parámetro opcional"""
     return x - y
 
@@ -26,6 +32,9 @@ res=resta(5)
 print(res)
 res=resta(5,2)
 print(res)
+res=resta(y=5,x=2)
+print(res)
+
 
 def multi(x=2,y=3):
     return x*y
@@ -42,20 +51,25 @@ print(res)
 res=multi(3,5)
 print(res)
 
+# def a(c=None):
+def a(c=0):
+    return 100 + c
 
-def a(c=None):
-    return 100
-
-def b(n=a()):
+def b(n=a(20)):
     return n + 50
 
-b()
+print(b(20))
+
+print(b())
+
 
 
 def f(*args):
     return args
 
 print(f(1, 5, True, False, "Hello, world!"))
+
+print(f(1, 5))
 
 
 def f(*args, **kwargs):

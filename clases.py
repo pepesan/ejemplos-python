@@ -6,10 +6,11 @@ obj= ClassName()
 
 class Employee:
     'Clase que maneja los datos de un empleado'
-    #comenatrio
+    #comentario
     def __init__(self):
         self.name=""
         self.salary=0
+        # return self
 
 jorge=Employee()
 print(jorge.name)
@@ -17,6 +18,12 @@ jorge.name="Jorge"
 print(jorge.name)
 jorge.salary=45000
 print(jorge.salary)
+
+juan=Employee()
+juan.name="Juan"
+juan.salary=15000
+print(juan.name)
+print(juan.salary)
 
 
 class Employee:
@@ -35,6 +42,9 @@ print(isabel.name)
 isabel=Employee("Isabel",60000)
 print(isabel.name)
 print(isabel.salary)
+isabel=Employee("Isabel")
+print(isabel.name)
+print(isabel.salary)
 
 class Employee:
     'Clase que maneja los datos de un empleado'
@@ -44,6 +54,7 @@ class Employee:
         self.salary=salary
 
     def incSalary(self,valor):
+        #self.salary=self.salary+valor
         self.salary+=valor
 
 maria=Employee(name="Maria",salary=75000)
@@ -109,12 +120,61 @@ class Point:
 
 pt1 = Point()
 pt2 = pt1
+pt2.x=2
+print(pt1.x)
 pt3 = pt1
-print (id(pt1), id(pt2), id(pt3)) # prints the ids of the obejcts
+print (id(pt1), id(pt2), id(pt3)) # prints the ids of the objects
 del pt1
 del pt2
 del pt3
 
+
+class Point:
+    def __init__( self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __del__(self):
+        class_name = self.__class__.__name__
+        print (class_name, "destroyed")
+    def getX(self):
+        return self.x
+    def setX(self,x):
+        self.x=x
+punto=Point(12,15)
+print(punto.x)
+print(punto.y)
+punto.setX(10)
+print(punto.x)
+print(punto.getX())
+
+class Employee:
+    'Clase que maneja los datos de un empleado'
+    #comenatrio
+    def __init__(self, name="",salary=0):
+        self.name=name
+        self.salary=salary
+
+    def incSalary(self,valor):
+        #self.salary=self.salary+valor
+        self.salary+=valor
+
+    def setSalary(self,salary):
+        self.salary=salary
+
+    def getSalary(self):
+        return self.salary
+
+    def setName(self, name):
+        self.name = name
+
+    def getName(self):
+        return self.name
+
+
+emp1 = Employee("Zara", 2000)
+emp1.salary=30000
+emp1.setSalary(35000)
+print(emp1.getSalary())
 
 class Parent:        # define parent class
    parentAttr = 100
