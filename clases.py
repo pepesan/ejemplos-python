@@ -92,6 +92,7 @@ emp2.displayEmployee()
 print ("Total Employee %d" % Employee.empCount)
 
 
+
 emp1.age = 7  # Add an 'age' attribute.
 emp1.age = 8  # Modify 'age' attribute.
 del emp1.salary  # Delete 'salary' attribute.
@@ -230,6 +231,39 @@ c = Child()          # instance of child
 c.myMethod()         # child calls overridden method
 
 
+class Parent:
+    def __init__(self):
+        self.parameter=""
+
+class Child(Parent):
+    def __init__(self):
+        super(Child, self).__init__()
+        self.attribute=""
+
+
+c=Child()
+print(c.parameter)
+print(c.attribute)
+
+class Parent:
+    def __init__(self,parameter=""):
+        self.parameter=parameter
+
+class Child(Parent):
+    def __init__(self,attribute="",parameter=""):
+        self.attribute=attribute
+        super(Child, self).__init__(parameter)
+
+
+c=Child("Hola")
+print(c.parameter)
+print(c.attribute)
+
+c=Child("Hola","Mundo")
+print(c.parameter)
+print(c.attribute)
+
+
 class Vector:
     def __init__(self, a, b):
         self.a = a
@@ -276,7 +310,7 @@ class Cliente:
         self.cotizacion=cotizacion
         self.totalCotizaciones+=cotizacion
 
-    def toString(self):
+    def __str__(self):
         return "Cliente[nombre:"+self.nombre+"]"
 
 
@@ -285,7 +319,7 @@ indra.setCotizacion(20000)
 print(indra.cotizacion)
 telefonica=Cliente(nombre="Telefónica")
 print(telefonica.nombre)
-print(telefonica.toString())
+print(telefonica.__str__())
 
 
 class Figuras(object):
