@@ -371,4 +371,35 @@ print(perso.nombre)
 print(emp1.sueldo)
 print(emp1.nombre)
 
+
+class Persona:
+    def __init__(self, nombre="",edad=0):
+        self.nombre=nombre
+        self.edad=edad
+        print("init de Persona")
+
+class Empleado(Persona):
+    def __init__(self, nombre="",edad=0,sueldo=0):
+        super().__init__(nombre,edad)
+        self.sueldo=sueldo
+        print("init de Empleado")
+class Jefe(Empleado):
+
+    def __init__(self, nombre="",edad=0,sueldo=0,departamento=""):
+        super().__init__(nombre,edad,sueldo)
+        self.departamento=departamento
+
+
+perso=Persona("personita")
+emp1=Empleado(nombre="Juan",sueldo=65000)
+jefecillo=Jefe("Rodrigo",56,0,"Carcel")
+
+
+print(perso.nombre)
+print(emp1.sueldo)
+print(emp1.nombre)
+print(jefecillo.nombre)
+print(jefecillo.sueldo)
+print(jefecillo.departamento)
+
 emp2=Empleado()
