@@ -51,6 +51,10 @@ print(res)
 res=multi(3,5)
 print(res)
 
+res=multi(y=3)
+print(res)
+
+
 # def a(c=None):
 def a(c=0):
     return 100 + c

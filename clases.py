@@ -34,6 +34,7 @@ class Employee:
         self.salary=salary
 
 isabel=Employee()
+isabel=Employee()
 print(isabel.salary)
 isabel=Employee(salary=60000)
 print(isabel.salary)
@@ -193,11 +194,13 @@ class Parent:        # define parent class
 
 class Child(Parent): # define child class
    def __init__(self):
+      super().__init__()
       print ("Calling child constructor")
 
    def childMethod(self):
       print ('Calling child method')
 
+print("Datos de herencia")
 c = Child()          # instance of child
 c.childMethod()      # child calls its method
 c.parentMethod()     # calls parent's method

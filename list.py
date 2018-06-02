@@ -28,12 +28,24 @@ print ("After deleting value at index 2 : ")
 print (list1)
 
 
+
+
 Celsius = [39.2, 36.5, 37.3, 37.8]
+
+Fahrenheit=[]
+for item in Celsius:
+    i=((float(9)/5)*item + 32)
+    Fahrenheit.append(i)
+
 Fahrenheit = [ ((float(9)/5)*item + 32) for item in Celsius ]
 print(Fahrenheit)
 
 
-mitupla=[(x,y,z) for x in range(1,30) for y in range(x,30) for z in range(y,30) if x**2 + y**2 == z**2]
+mitupla=[(x,y,z)
+         for x in range(1,30)
+         for y in range(x,30)
+         for z in range(y,30)
+         if x**2 + y**2 == z**2]
 print(mitupla)
 
 
