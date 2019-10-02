@@ -14,10 +14,12 @@ dict['Age'] = 8 # update existing entry
 dict['School'] = "DPS School" # Add new entry
 dict['Last Name']="Petterson"
 
+print(dict)
+
 print (dict['Last Name'])
 
-for nombre in dict:
-    print(dict[nombre])
+for clave in dict:
+    print(dict[clave])
 
 
 
