@@ -18,8 +18,9 @@ print ("New value available at index 2 : ")
 print (list[2])
 
 x = [1, 2, 3]
+# Añade un elemento al final del listado
 x.append(4)
-print (x)
+print (x) # [1, 2, 3, 4]
 
 
 print (list1)
@@ -27,15 +28,35 @@ del (list1[2])
 print ("After deleting value at index 2 : ")
 print (list1)
 
+print ("Suma de dos listados en uno: ")
+list2 = list1+x
+print(list2)
 
 
 
-Celsius = [39.2, 36.5, 37.3, 37.8]
+Celsius = [25.0, 36.5, 37.3, 37.8]
+UnFahrenheit= ((float(9)/5)*Celsius[0] + 32)
+print(Celsius)
+# En cada una de las vueltas elemento vale en cada vuelta un valor distinto
+# Empezando por e primer valor de listado
+# Y terminando por el último valor del listado
+for elemento in Celsius:
+    print(elemento)
 
 Fahrenheit=[]
 for item in Celsius:
     i=((float(9)/5)*item + 32)
     Fahrenheit.append(i)
+    print(i)
+    print(Fahrenheit)
+
+print(Fahrenheit)
+"""
+for (int i=0;i<10;i++){
+    cosa 1; 
+    cosa 2;
+}
+"""
 
 Fahrenheit = [ ((float(9)/5)*item + 32) for item in Celsius ]
 print(Fahrenheit)
