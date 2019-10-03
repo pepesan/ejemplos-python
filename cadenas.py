@@ -2,24 +2,26 @@
 
 
 cadena ="lorem Ipsum no cuetator cosas"
-contador=0
-contador_letra=0
-ipsum="ipsum"
-encontrado=False
-for letra in cadena:
-    if(letra.lower()==ipsum[0]):
-        contador_letra=1
-        petado=False
-        while(contador_letra<len(ipsum)):
-            if(not(cadena[contador+contador_letra].lower()==ipsum[contador_letra].lower())):
-                petado=True
-                break
-            contador_letra=contador_letra+1
-        if(not(petado)):
-            encontrado=True
-    contador=contador +1
+# Longitud de cadena
+print("Logintud de la cadena:",len(cadena))
+# Convertir a mayúsculas
+print("Cadena en mayúsculas: ",cadena.upper())
+# Convertir a minúsculas
+print("Cadena en minúsculas: ",cadena.lower())
+cadena2 = " cx xc xc xc  otra cadena"
+# Concatenar
+cadena3= cadena + cadena2
+print(cadena3)
+# encontrar una subcadena
+res= cadena3.find("otra")
+print("Resultado: Índice donde ha encontrado la subcadena:",res)
 
-if(encontrado):
-    print("Hemos encontrado el ipsum")
-else:
-    print("No hemos encontrado el ipsum")
+# Reemplazar un valor en una cadena por otro valor
+res= cadena3.replace("otra","esta")
+print("Resultado: cadena cambiada:",res)
+# Reemplaza un número de veces, 2 en este caso
+res= cadena3.replace("xc","22",2)
+print("Resultado: cadena cambiada:",res)
+
+res= cadena3.index("xc")
+print("Resultado: indice:",res)
