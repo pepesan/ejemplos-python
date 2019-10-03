@@ -70,8 +70,13 @@ mitupla=[(x,y,z)
 print(mitupla)
 
 
+# Seleccionamos con un rango de 1 a 50
 mi_listado=[ x for x in range(1,51)]
+#Seleccionamos con un rango de 0 a 49
+mi_listado=[ x for x in range(50)]
 print(mi_listado)
+print(len(mi_listado))
+
 
 listado=[1, 2, 3]
 for x in listado:
@@ -79,3 +84,4 @@ for x in listado:
 
 if( 3 in listado):
     print ("Está vivo!!!!!")
+    
