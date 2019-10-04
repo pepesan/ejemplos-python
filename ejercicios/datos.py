@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Fichero principal de python
+Autor: David Vaquero <pepesan@gmail.com>
+"""
 numero = 2
 print(numero)
 flotante= 3.5
