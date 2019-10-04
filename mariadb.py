@@ -1,5 +1,5 @@
 import datetime
-
+import time
 import pymysql
 
 # Conectar con base de datos
@@ -19,8 +19,7 @@ for fila in filas:
    print(fila)
 
 # Definir comandos para insertar registros
-import time
-import datetime
+
 
 ts = time.time()
 now = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')

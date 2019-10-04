@@ -17,6 +17,12 @@ for letra in cadena:
             encontrado=True
     contador=contador +1
 
+
+cadena2= cadena.lower()
+if (cadena2.index(ipsum)>=0 ):
+    encontrado = True
+else:
+    encontrado = False
 if(encontrado):
     print("Hemos encontrado el ipsum")
 else:
