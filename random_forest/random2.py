@@ -195,6 +195,21 @@ def random_forest(train, test, max_depth, min_size, sample_size, n_trees, n_feat
 seed(1)
 # load and prepare data
 dataset = load_csv('sonar.all-data.csv')
+
+print(dataset[0])
+for item in dataset[0]:
+    print(item)
+
+i=0
+for row in dataset:
+    # print(row)
+    j=0
+    for colum in row:
+        # print("Fila:", i, ", Columna:", j, ", Valor:", colum)
+        print ("Fila:",i,", Columna:", j, ", Valor:",dataset[i][j])
+        j=j+1
+    i=i+1
+
 # convert string attributes to integers
 for i in range(0, len(dataset[0])-1):
     str_column_to_flt(dataset, i)
