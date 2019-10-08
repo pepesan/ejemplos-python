@@ -1,3 +1,3 @@
-import fibo
+from modulobiblioteca import fibo
 
-resultado=fibo.fib(10)
+resultado= fibo.fib(10)

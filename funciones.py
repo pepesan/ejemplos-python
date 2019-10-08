@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+def procedimiento():
+    print("procedimiento")
+
+procedimiento()
 
 def suma(x, y):
     """Devuelve x + y"""

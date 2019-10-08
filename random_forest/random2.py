@@ -38,7 +38,9 @@ def cross_validation_split(dataset, n_folds):
     for i in range(n_folds):
         fold = list()
         while len(fold) < fold_size:
-            index = randrange(len(dataset_copy))
+            longitud=len(dataset_copy)-1
+            print("longitud:",longitud)
+            index = randrange(longitud)
             fold.append(dataset_copy.pop(index))
         dataset_split.append(fold)
     return dataset_split

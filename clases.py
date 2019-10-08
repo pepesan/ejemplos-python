@@ -1,66 +1,94 @@
-class ClassName:
+class NombreClase:
    'Optional class documentation string'
    #class_suite
 
-obj= ClassName()
+obj = NombreClase()
 
-class Employee:
+class Empleado:
     'Clase que maneja los datos de un empleado'
     #comentario
     def __init__(self):
-        self.name=""
-        self.salary=0
+        self.nombre = ""
+        self.salario = 0
         # return self
 
-jorge=Employee()
-print(jorge.name)
-jorge.name="Jorge"
-print(jorge.name)
-jorge.salary=45000
-print(jorge.salary)
+jorge=Empleado()
+print(jorge.nombre)
+jorge.nombre= "Jorge"
+print(jorge.nombre)
+print(jorge.salario)
+jorge.salario=45000
+print(jorge.salario)
 
-juan=Employee()
-juan.name="Juan"
-juan.salary=15000
-print(juan.name)
-print(juan.salary)
+juan=Empleado()
+juan.nombre= "Juan"
+juan.salario=15000
+print(juan.nombre)
+print(juan.salario)
 
 
-class Employee:
+class Empleado:
     'Clase que maneja los datos de un empleado'
-    #comenatrio
-    def __init__(self, name="",salary=0):
-        self.name=name
-        self.salary=salary
+    #comentario
+    def __init__(self, nombre="", salario=0):
+        self.nombre=nombre
+        self.salario=salario
 
-isabel=Employee()
-isabel=Employee()
-print(isabel.salary)
-isabel=Employee(salary=60000)
-print(isabel.salary)
-isabel=Employee(name="Isabel")
-print(isabel.name)
-isabel=Employee("Isabel",60000)
-print(isabel.name)
-print(isabel.salary)
-isabel=Employee("Isabel")
-print(isabel.name)
-print(isabel.salary)
+isabel=Empleado()
+isabel=Empleado()
+print(isabel.salario)
+isabel=Empleado("Isabel")
+print(isabel.nombre)
+print(isabel.salario)
+isabel=Empleado("Isabel",60000)
+print(isabel.nombre)
+print(isabel.salario)
+isabel=Empleado(salario=60000)
+print(isabel.salario)
+isabel=Empleado(nombre="Isabel")
+print(isabel.nombre)
 
-class Employee:
+
+class Empleado:
     'Clase que maneja los datos de un empleado'
-    #comenatrio
-    def __init__(self, name="",salary=0):
-        self.name=name
-        self.salary=salary
+    #comentario
+    def __init__(self, nombre="", salario=0):
+        self.nombre=nombre
+        self.salario=salario
 
-    def incSalary(self,valor):
-        #self.salary=self.salary+valor
-        self.salary+=valor
+    def incrementaSalario(self, valor):
+        # self.__salario = self.__salario+valor
+        # += -= *= /=
+        self.salario += valor
 
-maria=Employee(name="Maria",salary=75000)
-maria.incSalary(10000)
-print(maria.salary)
+maria=Empleado(nombre="Maria", salario=75000)
+
+# maria.__salario= maria.__salario+10000
+def incrementaSalario(salario, incremento):
+    return salario+incremento
+maria.salario = incrementaSalario(maria.salario,10000)
+
+maria.incrementaSalario(10000)
+print(maria.salario)
+
+
+class Empleado:
+    'Clase que maneja los datos de un empleado'
+    #comentario
+    def __init__(self, nombre="", salario=0):
+        self.nombre=nombre
+        self.__salario=salario
+
+    def setSalario(self, salario):
+        self.__salario=salario
+
+    def getSalario(self):
+        return self.__salario
+
+maria=Empleado(nombre="Maria", salario=75000)
+print(maria.getSalario())
+maria.setSalario(15000)
+print(maria.getSalario())
 
 
 class Employee:
@@ -78,7 +106,7 @@ class Employee:
         print("Hello, I am %s!" % cls)
 
     def displayCount(self):
-        print ("Total Employee %d" % Employee.empCount)
+        print ("Total Employee %d" % Empleado.empCount)
 
     def displayEmployee(self):
         print ("Name : ", self.name, ", Salary: ", self.salary)
