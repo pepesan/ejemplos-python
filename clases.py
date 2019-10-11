@@ -91,19 +91,19 @@ maria.setSalario(15000)
 print(maria.getSalario())
 
 
-class Employee:
-    'Common base class for all employees'
+class Empleado:
+    'Clase base de manejo de empleados'
     #esta variable es estática y se comparte entre instancias de Employee
     empCount = 0
 
     def __init__(self, name, salary):
         self.name = name
         self.salary = salary
-        Employee.empCount += 1
+        Empleado.empCount += 1
 
     @classmethod
-    def introduce(cls):
-        print("Hello, I am %s!" % cls)
+    def presenta(cls, dato):
+        print("Hola, me llamo ", dato,"!")
 
     def displayCount(self):
         print ("Total Employee %d" % Empleado.empCount)
@@ -111,33 +111,39 @@ class Employee:
     def displayEmployee(self):
         print ("Name : ", self.name, ", Salary: ", self.salary)
 
-"This would create first object of Employee class"
-emp1 = Employee("Zara", 2000)
-"This would create second object of Employee class"
-emp2 = Employee("Manni", 5000)
+"creamos el primero objeto"
+emp1 = Empleado("Zara", 2000)
+"creamos un segundo objeto de Empleado"
+emp2 = Empleado("Manni", 5000)
 
 emp1.displayEmployee()
 emp2.displayEmployee()
-print ("Total Employee %d" % Employee.empCount)
-
+print ("Número de Empleados %d" % Empleado.empCount)
+Empleado.presenta("")
 
 
 emp1.age = 7  # Add an 'age' attribute.
 emp1.age = 8  # Modify 'age' attribute.
+print("Edad del empleado:",emp1.age)
+# No funciona porque no tiene ese atributo
+# print("Edad del empleado:",emp2.age)
 del emp1.salary  # Delete 'salary' attribute.
+# No funciona porque no tiene ese atributo
+# print(emp1.salary)
+print(emp2.salary)
 
-
+# funciones de control de atributos
 hasattr(emp1, 'age')    # Returns true if 'age' attribute exists
 getattr(emp1, 'age')    # Returns value of 'age' attribute
 setattr(emp1, 'age', 8) # Set attribute 'age' at 8
 delattr(emp1, 'age')    # Delete attribute 'age'
 
 
-print ("Employee.__doc__:", Employee.__doc__)
-print ("Employee.__name__:", Employee.__name__)
-print ("Employee.__module__:", Employee.__module__)
-print ("Employee.__bases__:", Employee.__bases__)
-print ("Employee.__dict__:", Employee.__dict__)
+print ("Empleado.__doc__:", Empleado.__doc__)
+print ("Empleado.__name__:", Empleado.__name__)
+print ("Empleado.__module__:", Empleado.__module__)
+print ("Empleado.__bases__:", Empleado.__bases__)
+print ("Empleado.__dict__:", Empleado.__dict__)
 
 
 class Point:
@@ -177,63 +183,71 @@ punto.setX(10)
 print(punto.x)
 print(punto.getX())
 
-class Employee:
+class Empleado:
     'Clase que maneja los datos de un empleado'
-    #comenatrio
-    def __init__(self, name="",salary=0):
-        self.name=name
-        self.salary=salary
+    #comentario
+    def __init__(self, nombre="",salario=0):
+        self.nombre=nombre
+        self.salario=salario
 
-    def incSalary(self,valor):
-        #self.salary=self.salary+valor
-        self.salary+=valor
+    def incSalario(self,valor):
+        #self.salario=self.salario+valor
+        self.salario+=valor
 
-    def setSalary(self,salary):
-        self.salary=salary
+    def setSalario(self,salario):
+        self.salario=salario
 
-    def getSalary(self):
-        return self.salary
+    def getSalario(self):
+        return self.salario
 
-    def setName(self, name):
-        self.name = name
+    def setNombre(self, nombre):
+        self.nombre = nombre
 
-    def getName(self):
-        return self.name
+    def getNombre(self):
+        return self.nombre
+    def __str__ (self):
+        return 'Empleado [nombre:'+ self.nombre+", salario:"+ str(self.salario)+"]"
 
 
-emp1 = Employee("Zara", 2000)
-emp1.salary=30000
-emp1.setSalary(35000)
-print(emp1.getSalary())
+emp1 = Empleado("Zara", 2000)
+emp1.salario=30000
+emp1.setSalario(35000)
+print(emp1.getSalario())
+print(emp1)
 
-class Parent:        # define parent class
-   parentAttr = 100
+class Madre:        # clase madre
+   atributoEstatico=100
+
    def __init__(self):
-      print ("Calling parent constructor")
+      print ("Constructora de la Madre")
+      self.atributoMadre = 100
 
-   def parentMethod(self):
-      print ('Calling parent method')
+   def metodoMadre(self):
+      print ('Método de la madre')
 
    def setAttr(self, attr):
-      Parent.parentAttr = attr
+      self.atributoMadre = attr
 
    def getAttr(self):
-      print ("Parent attribute :", Parent.parentAttr)
+      return self.atributoMadre
 
-class Child(Parent): # define child class
+class Hija(Madre): # clase hija
    def __init__(self):
       super().__init__()
-      print ("Calling child constructor")
+      print ("Llamando a la constrctura de la hija")
 
-   def childMethod(self):
-      print ('Calling child method')
+   def metodoHija(self):
+      print ('llamando al método de la hija')
 
 print("Datos de herencia")
-c = Child()          # instance of child
-c.childMethod()      # child calls its method
-c.parentMethod()     # calls parent's method
-c.setAttr(200)       # again call parent's method
-c.getAttr()          # again call parent's method
+Madre.atributoEstatico = 200
+print(Madre.atributoEstatico)
+print(Hija.atributoEstatico)
+c = Hija()          # instancia hija
+c.metodoHija()      # llama al método de la hija
+c.metodoMadre()     # llama a método de la madre
+c.setAttr(200)       # llama al método de la madre
+print(c.getAttr())          # llama al método de la madre
 
 
 class A:        # define your class A
@@ -279,12 +293,19 @@ print(c.attribute)
 class Parent:
     def __init__(self,parameter=""):
         self.parameter=parameter
+    def metodoMadre(self):
+        print("Metodo madre en Madre")
 
 class Child(Parent):
     def __init__(self,attribute="",parameter=""):
         self.attribute=attribute
+        # self.parameter=parameter
         super(Child, self).__init__(parameter)
-
+    def metodoHija(self):
+        self.metodoMadre()
+    def metodoMadre(self):
+        print ("Metodo Madre en Hija")
+        super(self).metodoMadre()
 
 c=Child("Hola")
 print(c.parameter)
