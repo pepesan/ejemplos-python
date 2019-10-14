@@ -429,6 +429,8 @@ class Persona:
         self.nombre=nombre
         self.edad=edad
         print("init de Persona")
+    def __str__(self):
+        return "Persona[ nombre:"+self.nombre+", edad:"+str(self.edad)+"]"
 
 class Empleado(Persona):
     def __init__(self, nombre="",edad=0,sueldo=0):
