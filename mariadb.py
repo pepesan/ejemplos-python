@@ -9,6 +9,17 @@ conexion = pymysql.connect(host="localhost",
                            database="test")
 cursor = conexion.cursor()
 
+# Recuperar registros de la tabla 'usuarios'
+registros = "SELECT * FROM usuarios;"
+
+# Mostrar registros
+cursor.execute(registros)
+filas = cursor.fetchall()
+for fila in filas:
+   print(fila)
+
+
+"""
 # Recuperar registros de la tabla 'language'
 registros = "SELECT * FROM language;"
 
@@ -18,8 +29,8 @@ filas = cursor.fetchall()
 for fila in filas:
    print(fila)
 
-# Definir comandos para insertar registros
 
+# Definir comandos para insertar registros
 
 ts = time.time()
 now = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -71,3 +82,5 @@ for fila in filas:
 # Finalizar
 conexion.commit()
 conexion.close()
+
+"""
