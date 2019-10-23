@@ -1,87 +1,57 @@
 
+
+
+
+def imprimeDatos(conexion, sql):
+
+    cursor = conexion.cursor()
+
+    # Mostrar registros
+    cursor.execute(sql)
+    filas = cursor.fetchall()
+    # Metadatos print(cursor.description)
+
+    for fila in filas:
+        print(fila)
+
+
+def insertaDatos(conexion, sql, datos):
+    # Ejecutar comandos
+    cursor = conexion.cursor()
+    cursor.execute(sql,datos)
+    conexion.commit()
+
+def updateDatos(conexion, sql, datos):
+    # Ejecutar comandos
+    cursor = conexion.cursor()
+    cursor.execute(sql,datos)
+    conexion.commit()
+
+
+def borraDatos(conexion, sql):
+    cursor = conexion.cursor()
+    cursor.execute(sql)
+    conexion.commit()
+
+def importSchema(conexion, sql):
+    cursor = conexion.cursor()
+    cursor.execute(sql)
+    conexion.commit()
+
+
 import pymysql
 
-class ConexionMySql:
-    def __init__(self, host = "localhost", port=3306, username="root", password="", database="test"):
-        self.host=host
-        self.port = port
-        self.username=username
-        self.password= password
-        self.database=database
-        self.conexion = pymysql.connect(host=self.host,
-                           port=self.port,
-                           user=self.username,
-                           passwd=self.password,
-                           database=self.database)
-        self.cursor=self.conexion.cursor()
-    def imprimeTabla(self, nombreTabla):
-        # Mostrar registros
-        sql= "Select * from "+nombreTabla+";"
-        self.imprimeDatos(sql)
-    def imprimeDatos(self,sql):
-        # Mostrar registros
-        self.cursor.execute(sql)
-        filas = self.cursor.fetchall()
-        # Metadatos print(cursor.description)
-
-        for fila in filas:
-            print(fila)
-
-    def insertaRegistro(self,nombreTabla, campos, datos):
-        sql= "insert into "+nombreTabla+"("
-        for index in range(len(campos)):
-            if(index>=(len(campos)-1)):
-                sql+=campos[index]
-            else:
-                sql+=campos[index]+","
-        sql+=") VALUES ("
-        for index in range(len(datos)):
-            if(index>=(len(datos)-1)):
-                sql+="%s"
-            else:
-                sql+="%s,"
-        sql+=");"
-        print(sql)
-        self.insertaDatos(sql, datos)
-
-    def insertaDatos(self,sql, datos):
-        # Ejecutar comandos
-
-        self.cursor.execute(sql,datos)
-        self.conexion.commit()
-
-    def updateDatos(self,sql, datos):
-        # Ejecutar comandos
-
-        self.cursor.execute(sql,datos)
-        self.conexion.commit()
-
-
-    def borraDatos(self,sql):
-
-        self.cursor.execute(sql)
-        self.conexion.commit()
-
-    def importSchema(self, sql):
-        cursor = self.conexion.cursor()
-        cursor.execute(sql)
-        self.conexion.commit()
-
-    def __del__(self):
-        self.conexion.close()
-        print("Conexión cerrada")
-
-
-
-
 # Conectar con base de datos
-#conexion = Conexion()
-conexion = ConexionMySql(port=3306, password="root")
-
+conexion = pymysql.connect(host="localhost",
+                           port=3306,
+                           user="root",
+                           passwd="root",
+                           database="test")
+cursor = conexion.cursor()
 sql="USE `test`;"
-conexion.importSchema(sql)
+importSchema(conexion,sql)
 sql="DROP TABLE IF EXISTS `usuarios`;"
-conexion.importSchema(sql)
+importSchema(conexion,sql)
 sql="""CREATE TABLE `usuarios` (
   `id_user` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci NOT NULL,
@@ -94,7 +64,7 @@ sql="""CREATE TABLE `usuarios` (
   UNIQUE KEY `nombre_usuario_user` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=Utf8mb4 COLLATE=Utf8mb4_unicode_520_ci COMMENT='Aquí van los usuarios de la aplicación';
 """
-conexion.importSchema(sql)
+importSchema(conexion,sql)
 sql="""
 INSERT INTO `usuarios` VALUES
     (1,'admin','admin','admin@cursosdedesarrollo.com',NULL,'sha1',0),
@@ -103,24 +73,23 @@ INSERT INTO `usuarios` VALUES
     (6,'bea','contraseña','p@p.com',NULL,'sha1',0);
 
 """
-conexion.importSchema(sql)
+importSchema(conexion,sql)
+
 # Recuperar registros de la tabla 'usuarios'
-#registros = "SELECT * FROM usuarios;"
+registros = "SELECT * FROM usuarios;"
 
 # Mostrar registros
-#conexion.imprimeDatos(sql=registros)
-conexion.imprimeTabla("usuarios")
+imprimeDatos(conexion,sql=registros)
+
 
 
 
 # Definir comandos para insertar registros
-"""registro1 = "INSERT INTO usuarios " + \
+registro1 = "INSERT INTO usuarios " + \
                 " (username, password, email) " + \
                 "VALUES" + \
                 " (%s, %s, %s);"
-"""
-#conexion.insertaDatos(registro1, ('pepesan','contraseña','p@p.com'))
-conexion.insertaRegistro('usuarios',('username', 'password', 'email'), ('pepesan','contraseña','p@p.com'))
+insertaDatos(conexion, registro1, ('pepesan','contraseña','p@p.com'))
 # ts = time.time()
 # now = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 # print(now)
@@ -128,28 +97,8 @@ conexion.insertaRegistro('usuarios',('username', 'password', 'email'), ('pepesan
 registros = "SELECT * FROM usuarios WHERE username='pepesan';"
 
 # Mostrar registros
-conexion.imprimeDatos(registros)
+imprimeDatos(conexion,registros)
 
-registro1 = "Update usuarios SET password=%s WHERE username='pepesan';"
-datos = ('contraseñanueva')
-
-# Ejecutar comandos
-conexion.updateDatos(registro1, datos)
-
-registros = "SELECT * FROM usuarios WHERE username='pepesan';"
-
-# Mostrar registros
-conexion.imprimeDatos(registros)
-
-registro1 = "Delete from usuarios where username='pepesan';"
-
-conexion.borraDatos(registro1)
-
-registros = "SELECT * FROM usuarios WHERE username='pepesan';"
-
-# Mostrar registros
-conexion.imprimeDatos(registros)
-"""
 
 registro1 = "Update usuarios SET password=%s WHERE username='pepesan';"
 datos = ('contraseñanueva')
@@ -172,7 +121,7 @@ registros = "SELECT * FROM usuarios WHERE username='pepesan';"
 imprimeDatos(conexion,registros)
 
 conexion.close()
-
+"""
 
 BBDD SAKILA
 # Recuperar registros de la tabla 'language'
@@ -236,6 +185,6 @@ for fila in filas:
 
 # Finalizar
 conexion.commit()
-conexion.close()
+
 
 """

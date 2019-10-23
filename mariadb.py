@@ -30,7 +30,12 @@ def updateDatos(conexion, sql, datos):
 
 def borraDatos(conexion, sql):
     cursor = conexion.cursor()
-    cursor.execute(registro1)
+    cursor.execute(sql)
+    conexion.commit()
+
+def importSchema(conexion, sql):
+    cursor = conexion.cursor()
+    cursor.execute(sql)
     conexion.commit()
 
 
@@ -43,6 +48,34 @@ conexion = pymysql.connect(host="localhost",
                            passwd="root",
                            database="test")
 cursor = conexion.cursor()
+
+sql="USE `test`;"
+importSchema(conexion,sql)
+sql="DROP TABLE IF EXISTS `usuarios`;"
+importSchema(conexion,sql)
+sql="""CREATE TABLE `usuarios` (
+  `id_user` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci NOT NULL,
+  `password` varchar(50) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci NOT NULL,
+  `email` varchar(70) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci DEFAULT NULL,
+  `encmethod` varchar(50) CHARACTER SET Utf8mb4 COLLATE Utf8mb4_unicode_520_ci NOT NULL DEFAULT 'sha1',
+  `active` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `nombre_usuario_user` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=Utf8mb4 COLLATE=Utf8mb4_unicode_520_ci COMMENT='Aquí van los usuarios de la aplicación';
+"""
+importSchema(conexion,sql)
+sql="""
+INSERT INTO `usuarios` VALUES
+    (1,'admin','admin','admin@cursosdedesarrollo.com',NULL,'sha1',0),
+    (2,'pepito','pepito','pepito@cursosdedesarrollo.com','Administrador','sha1',1),
+    (5,'mery','contraseña','p@p.com',NULL,'sha1',0),
+    (6,'bea','contraseña','p@p.com',NULL,'sha1',0);
+
+"""
+importSchema(conexion,sql)
+
 
 # Recuperar registros de la tabla 'usuarios'
 registros = "SELECT * FROM usuarios;"
