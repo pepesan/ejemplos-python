@@ -56,6 +56,21 @@ class ConexionMySql:
         self.cursor.execute(sql,datos)
         self.conexion.commit()
 
+    def actualizaRegistro(self,nombreTabla, campos, datos, condiciones):
+        sql= "update "+nombreTabla+" set "
+        for index in range(len(campos)):
+            sql += campos[index] + "=" + datos[index]
+            if(index<(len(campos)-1)):
+                sql+=","
+        sql+=" Where "
+        for index in range(len(condiciones)):
+            sql += condiciones[index]
+            if (index < (len(condiciones) - 1)):
+                sql += ","
+        sql+=";"
+        print(sql)
+        self.cursor.execute(sql)
+        self.conexion.commit()
 
     def borraDatos(self,sql):
 
@@ -133,8 +148,13 @@ conexion.imprimeDatos(registros)
 registro1 = "Update usuarios SET password=%s WHERE username='pepesan';"
 datos = ('contraseñanueva')
 
+registros = "SELECT * FROM usuarios WHERE username='pepesan';"
+
+# Mostrar registros
+conexion.imprimeDatos(registros)
 # Ejecutar comandos
 conexion.updateDatos(registro1, datos)
+conexion.actualizaRegistro('usuarios',['password'],["'contraseña nueva'"],["username='pepesan'"])
 
 registros = "SELECT * FROM usuarios WHERE username='pepesan';"
 
@@ -145,10 +165,17 @@ registro1 = "Delete from usuarios where username='pepesan';"
 
 conexion.borraDatos(registro1)
 
+conexion.insertaRegistro('usuarios',['username', 'password', 'email'], ['pepesan','contraseña','p@p.com'])
+
+
+
 registros = "SELECT * FROM usuarios WHERE username='pepesan';"
 
 # Mostrar registros
 conexion.imprimeDatos(registros)
+registro1 = "Delete from usuarios where username='pepesan';"
+
+conexion.borraDatos(registro1)
 """
 
 registro1 = "Update usuarios SET password=%s WHERE username='pepesan';"

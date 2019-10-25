@@ -63,7 +63,7 @@ SELECT * FROM `usuarios` WHERE username="pepesan";
 UPDATE `usuarios` SET active=true WHERE username="pepesan";
 
 # EJERCICIO 7
-DELETE FROM `usuarios`WHERE username="pepesan"
+DELETE FROM `usuarios`WHERE username="pepesan";
 
 # EJERCICIO 8
 INSERT INTO `usuarios`(
