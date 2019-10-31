@@ -84,6 +84,8 @@ d = datetime.datetime(2009, 11, 12, 12)
 for libro in libros.find({"date": {"$lt": d}}).sort("author"):
     pprint(libro)
 
+for libro in libros.find({"date": {"$lt": d}}).sort("author",ASCENDING):
+    pprint(libro)
 
 condiciones = {"author": "J.R.R Tolkien"}
 valores = { "$set": { "text": "¡¡¡Y con mi Hacha!!"} }
