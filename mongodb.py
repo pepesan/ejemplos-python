@@ -5,25 +5,33 @@ client = MongoClient('mongodb://localhost:27017/test')
 db = client.test
 #acceso a colección
 libros = db.libros
+#libros=db.getCollection("libros")
 
 import datetime
+fecha = datetime.datetime(2011, 11, 4, 0, 5, 23, 283000, tzinfo=datetime.timezone.utc)
+print(fecha.year)
 objetoLibro = {"author": "Terry Pratchett",
         "title": "El color de la magia",
         "tags": ["magos", "medieval", "cachondeo"],
         "date": datetime.datetime.utcnow()}
 libro_id = libros.insert_one(objetoLibro).inserted_id
 print("Libro id: "+str(libro_id))
+objetoLibro['_id']=libro_id
+print("Libro: "+str(objetoLibro))
 # listado de colecciones
 print(db.list_collection_names())
 
-import pprint
+# Pretty print, imprime mejor los listados, diccionarios y tuplas
+from pprint import pprint
 # encuentra el primer libro
-pprint.pprint(libros.find_one())
-
+# Diferencia entre pprint y print
+print("Diferencia entre pprint y print")
+pprint(libros.find_one())
+print(libros.find_one())
 #encuentra un libro concreto por campo
-pprint.pprint(libros.find_one({"author": "Terry Pratchett"}))
+pprint(libros.find_one({"author": "Terry Pratchett"}))
 #encuentra un libro concreto por id
-pprint.pprint(libros.find_one({"_id": libro_id}))
+pprint(libros.find_one({"_id": libro_id}))
 
 from bson.objectid import ObjectId
 
@@ -31,10 +39,14 @@ from bson.objectid import ObjectId
 def get(post_id):
     # Convert from string to ObjectId:
     document = client.db.collection.find_one({'_id': ObjectId(post_id)})
-pprint.pprint(get(libro_id))
+pprint(get(libro_id))
 
 varios_libros = [{"author": "Neil Gayman",
                   "title": "Stardust",
+                  "tags": ["fantasía", "amor"],
+                  "date": datetime.datetime(2009, 11, 12, 11, 14)},
+                 {"author": "Terry Prachett & Neil Gayman",
+                  "title": "Buenos Presagios",
                   "tags": ["fantasía", "amor"],
                   "date": datetime.datetime(2009, 11, 12, 11, 14)},
                  {"author": "J.R.R Tolkien",
@@ -51,45 +63,55 @@ varios_libros = [{"author": "Neil Gayman",
                   "date": datetime.datetime(2009, 11, 10, 10, 45)}
                  ]
 result = libros.insert_many(varios_libros)
-pprint.pprint(result)
+print("Insert Many")
+pprint(result.inserted_ids)
+i=0
+for libro in varios_libros:
+    libro ['_id']= result.inserted_ids[0]
+    i+=1
 
+pprint(varios_libros)
 for libro in libros.find():
-    pprint.pprint(libro)
+    pprint(libro)
 
 print(libros.count_documents({}))
 print(libros.count_documents({'author':'Terry Pratchett'}))
+print("RegExp")
+print(libros.count_documents({'author':{'$regex':'Terry'}}))
 
 
 d = datetime.datetime(2009, 11, 12, 12)
 for libro in libros.find({"date": {"$lt": d}}).sort("author"):
-    pprint.pprint(libro)
+    pprint(libro)
 
 
 condiciones = {"author": "J.R.R Tolkien"}
 valores = { "$set": { "text": "¡¡¡Y con mi Hacha!!"} }
 
 libros.update_one(condiciones, valores)
-
-pprint.pprint(libros.find_one({"author":  "J.R.R Tolkien"}))
+print("Libro de Tolkien")
+pprint(libros.find_one({"author":  "J.R.R Tolkien"}))
 
 valores = { "$set": { "text": "¡¡¡Y con mi Hacha!!","title": "El Señor de los Anillos: La Comunidad del Anillo"} }
 
 libros.update_one(condiciones, valores)
 
-pprint.pprint(libros.find_one({"author":  "J.R.R Tolkien"}))
+pprint(libros.find_one({"author":  "J.R.R Tolkien"}))
 
+result = libros.find().skip(2).limit(3)
 result = libros.find({"author":  "J.R.R Tolkien"}).limit(2)
 print("Los dos primeros libros de Tolkien")
 for item in result:
-    pprint.pprint(item)
+    pprint(item)
 
+libros.delete_one({"_id":  libro_id})
 libros.delete_many({"author":  "J.R.R Tolkien"})
 
-pprint.pprint("Libros de Tolkien: "+str(libros.find_one({"author":  "J.R.R Tolkien"})))
+pprint("Libros de Tolkien: "+str(libros.find_one({"author":  "J.R.R Tolkien"})))
 
 
-result = db.profiles.create_index([('user_id', ASCENDING)], unique=True)
-print(sorted(list(db.profiles.index_information())))
+result = db.libros.create_index([('author', ASCENDING)], unique=True)
+print(sorted(list(db.libros.index_information())))
 
 libros.drop()
 print("Colecciones: "+str(db.list_collection_names()))
