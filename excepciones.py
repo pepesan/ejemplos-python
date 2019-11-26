@@ -19,8 +19,8 @@ except:
 Excepciones Encadenadas
 """
 try:
-   f = open("test.txt",encoding = 'utf-8')
-   # perform file operations
+    f = open("test.txt", encoding='utf-8')
+    # perform file operations
 except:
     print("Fallo al abrir")
 finally:
@@ -102,6 +102,7 @@ except Exception as inst:
 Excepciones personalizadas
 """
 
+
 class B(Exception):
     pass
 
@@ -126,6 +127,7 @@ for cls in [B, C, D]:
 """
 Excepciones personalizadas más completo
 """
+
 
 class Error(Exception):
     """Base class for exceptions in this module."""
@@ -159,3 +161,23 @@ class TransitionError(Error):
         self.previous = previous
         self.next = next
         self.message = message
+
+
+class HTTPExcepcion(Exception):
+
+    def __init__(self, mensaje='HTTPERROR: ', status='400', url='telecable.es'):
+        self.mensaje = mensaje
+        self.status = status
+        self.url = url
+
+    def __str__(self):
+        return self.mensaje
+
+
+try:
+    raise HTTPExcepcion("HTTPERROR: el servidor no responde", '500', "cursosdedesarrollo.com")
+except HTTPExcepcion as e:
+    print(e)
+    print(e.mensaje)
+    print(e.url)
+    print(e.status)
