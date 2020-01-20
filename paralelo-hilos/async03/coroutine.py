@@ -80,7 +80,7 @@ async def main():
 asyncio.run(main())
 
 # Future son objetos que son necesarios en las funciones de callback
-# que son usadas con async/await
+# que son usadas con async03/await
 
 import asyncio
 
