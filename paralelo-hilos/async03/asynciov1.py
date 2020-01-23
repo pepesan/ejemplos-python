@@ -1,15 +1,4 @@
 import asyncio
-
-# Definimos una función asíncrona
-async def main():
-    print('hello')
-    await asyncio.sleep(1)
-    print('world')
-
-#Ejecutamos la función asíncrona
-asyncio.run(main())
-
-import asyncio
 import time
 
 # Función asíncrona

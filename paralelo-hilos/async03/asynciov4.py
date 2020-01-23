@@ -4,7 +4,7 @@
 """Asynchronously get links embedded in multiple pages' HMTL."""
 
 import asyncio
-import logging
+import log
 import re
 import sys
 from typing import IO
@@ -15,14 +15,14 @@ import aiofiles
 import aiohttp
 from aiohttp import ClientSession
 
-logging.basicConfig(
+log.basicConfig(
     format="%(asctime)s %(levelname)s:%(name)s: %(message)s",
-    level=logging.DEBUG,
+    level=log.DEBUG,
     datefmt="%H:%M:%S",
     stream=sys.stderr,
 )
-logger = logging.getLogger("areq")
-logging.getLogger("chardet.charsetprober").disabled = True
+logger = log.getLogger("areq")
+log.getLogger("chardet.charsetprober").disabled = True
 
 HREF_RE = re.compile(r'href="(.*?)"')
 

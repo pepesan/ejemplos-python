@@ -44,6 +44,8 @@ asyncio.run(main())
 # timeout
 async def eternity():
     # Sleep for one hour
+    a = 2
+    print("Eternity")
     await asyncio.sleep(3600)
     print('yay!')
 
