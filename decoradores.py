@@ -1,7 +1,7 @@
 if __name__ == '__main__':
     def debug(f):
         def new_function(a, b):
-            print("Function add() called!")
+            print("Function called!")
             return f(a, b)
 
         return new_function
@@ -11,8 +11,31 @@ if __name__ == '__main__':
     def add(a, b):
         return a + b
 
+    @debug
+    def multi(a,b):
+        return a*b
+
 
     print(add(7, 5))
+    print(multi(2,3))
+
+    def milog(f):
+        def new_function(x):
+            print("Function called!")
+            fx = f(x)
+            print("Hacer el log de objeto guardado")
+            return fx
+
+        return new_function
+
+    @milog
+    def salva(x):
+        print("Objeto guardado")
+        return x
+
+    print(salva(7))
+
+
 
 
     class MyDecorator:
@@ -119,9 +142,8 @@ if __name__ == '__main__':
 
 
     def create_logger():
-        """
-        Creates a log object and returns it
-        """
+        # Creates a log object and returns it
+
         logger = logging.getLogger("example_logger")
         logger.setLevel(logging.INFO)
 
@@ -138,10 +160,8 @@ if __name__ == '__main__':
 
 
     def exception(function):
-        """
-        A decorator that wraps the passed in function and logs
-        exceptions should one occur
-        """
+        #A decorator that wraps the passed in function and logs exceptions should one occur
+    
 
         @functools.wraps(function)
         def wrapper(*args, **kwargs):
@@ -168,3 +188,4 @@ if __name__ == '__main__':
         zero_divide();
     except:
         print("Fallo fuera")
+        
