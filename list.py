@@ -35,7 +35,7 @@ print(list2)
 
 
 Celsius = [25.0, 36.5, 37.3, 37.8]
-UnFahrenheit= ((float(9)/5)*Celsius[0] + 32)
+UnFahrenheit = ((float(9)/5)*Celsius[0] + 32)
 print(Celsius)
 # En cada una de las vueltas elemento vale en cada vuelta un valor distinto
 # Empezando por e primer valor de listado
@@ -85,3 +85,6 @@ for x in listado:
 if( 3 in listado):
     print ("Está vivo!!!!!")
     
+
+holas = ['Hi!'] * 4  # ['Hi!', 'Hi!', 'Hi!', 'Hi!']
+print(4*holas)

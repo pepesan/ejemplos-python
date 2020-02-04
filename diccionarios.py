@@ -22,6 +22,7 @@ for clave in dict:
     print(dict[clave])
 
 
+dict['miarray'] = [1, 2]
 
 del dict['Name'] # remove entry with key 'Name'
 print (dict)
@@ -32,3 +33,10 @@ del dict       # delete entire dictionary
 
 dict = {'Name': 'Zara', 'Age': 7}
 print (len(dict))
+
+dict['Apellidos'] = {
+    'primero': "Luces",
+    'segundo': "Apagadas"
+}
+
+print(dict)

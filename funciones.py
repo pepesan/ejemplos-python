@@ -50,9 +50,14 @@ print(restaTres())
 # x=2, y=0,z=0
 print(restaTres(2))
 # x=2, y=3,z=0
-print(restaTres(2,3))
+print(restaTres(2, 3))
 # x=2, y=3,z=4
-print(restaTres(2,3,4))
+print(restaTres(2, 3, 4))
+#y=2
+print(restaTres(y=2))
+#z=2
+print(restaTres(z=2))
+
 
 
 def multi(x=2,y=3):
