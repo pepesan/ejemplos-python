@@ -14,15 +14,15 @@ class Empleado:
 
 jorge=Empleado()
 print(jorge.nombre)
-jorge.nombre= "Jorge"
+jorge.nombre = "Jorge"
 print(jorge.nombre)
 print(jorge.salario)
 jorge.salario=45000
 print(jorge.salario)
 
-juan=Empleado()
-juan.nombre= "Juan"
-juan.salario=15000
+juan = Empleado()
+juan.nombre = "Juan"
+juan.salario = 15000
 print(juan.nombre)
 print(juan.salario)
 
