@@ -1,42 +1,42 @@
 # -*- coding: utf-8 -*-
 
-dict = {
+midict = {
     'Name': 'Zara',
     'Age': 7,
     'Class': 'First'
 }
 
-print ("dict['Name']: ", dict['Name'])
-print ("dict['Age']: ", dict['Age'])
+print("dict['Name']: ", midict['Name'])
+print("dict['Age']: ", midict['Age'])
 
 
-dict['Age'] = 8 # update existing entry
-dict['School'] = "DPS School" # Add new entry
-dict['Last Name']="Petterson"
+midict['Age'] = 8  # update existing entry
+midict['School'] = "DPS School"  # Add new entry
+midict['Last Name'] = "Petterson"
 
-print(dict)
+print(midict)
 
-print (dict['Last Name'])
+print(midict['Last Name'])
 
-for clave in dict:
-    print(dict[clave])
-
-
-dict['miarray'] = [1, 2]
-
-del dict['Name'] # remove entry with key 'Name'
-print (dict)
-dict.clear()     # remove all entries in dict
-print (dict)
-del dict       # delete entire dictionary
+for clave in midict:
+    print(midict[clave])
 
 
-dict = {'Name': 'Zara', 'Age': 7}
-print (len(dict))
+midict['miarray'] = [1, 2]
 
-dict['Apellidos'] = {
+del midict['Name']  # remove entry with key 'Name'
+print(midict)
+midict.clear()     # remove all entries in dict
+print(midict)
+del midict       # delete entire dictionary
+
+
+midict = {'Name': 'Zara', 'Age': 7}
+print (len(midict))
+
+midict['Apellidos'] = {
     'primero': "Luces",
     'segundo': "Apagadas"
 }
 
-print(dict)
+print(midict)
