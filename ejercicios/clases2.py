@@ -1,7 +1,5 @@
 class Persona:
     def __init__(self, nombre="", dni="", tlf="", email="", direccion="", direcciones=None):
-        if direcciones is None:
-            direcciones = []
         self.nombre = nombre
         self.dni = dni
         self.tlf = tlf
