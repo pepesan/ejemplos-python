@@ -4,9 +4,7 @@ from sqlalchemy.orm import relationship, backref
 
 from sqlalchemy.ext.declarative import declarative_base
 
-
 Base = declarative_base()
-
 
 author_publisher = Table(
 
@@ -19,7 +17,6 @@ author_publisher = Table(
     Column("publisher_id", Integer, ForeignKey("publisher.publisher_id")),
 
 )
-
 
 book_publisher = Table(
 
@@ -35,7 +32,6 @@ book_publisher = Table(
 
 
 class Author(Base):
-
     __tablename__ = "author"
 
     author_id = Column(Integer, primary_key=True)
@@ -52,9 +48,13 @@ class Author(Base):
 
     )
 
+    def __str__(self):
+        return "Author: [author_id: " + str(self.author_id) + ", first_name: " + self.first_name \
+               + ", last_name: " + self.last_name + ", books: "+self.books\
+               + ", publishers: " + self.publishers + " ]"
+
 
 class Book(Base):
-
     __tablename__ = "book"
 
     book_id = Column(Integer, primary_key=True)
@@ -71,7 +71,6 @@ class Book(Base):
 
 
 class Publisher(Base):
-
     __tablename__ = "publisher"
 
     publisher_id = Column(Integer, primary_key=True)

@@ -180,24 +180,8 @@ def add_new_book(session, author_name, book_title, publisher_name):
 
     session.commit()
 
-
 def output_author_hierarchy(data):
-    """Output the data as a hierarchy list of authors"""
-    authors = data.assign(
-        name=data.first_name.str.cat(data.last_name, sep=" ")
-    )
-    authors_tree = Tree()
-    authors_tree.create_node("Authors", "authors")
-    for author, books in authors.groupby("name"):
-        authors_tree.create_node(author, author, parent="authors")
-        for book, publishers in books.groupby("title")["publisher"]:
-            book_id = f"{author}:{book}"
-            authors_tree.create_node(book, book_id, parent=author)
-            for publisher in publishers:
-                authors_tree.create_node(publisher, parent=book_id)
-
-    # Output the hierarchical authors data
-    authors_tree.show()
+    print(data)
 
 
 def main():
