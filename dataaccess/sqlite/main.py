@@ -1,9 +1,7 @@
-from importlib import resources
-
 from sqlalchemy import create_engine, asc, desc, func, and_
 from sqlalchemy.orm import sessionmaker
-from treelib import Tree
 
+# referencia: https://realpython.com/python-sqlite-sqlalchemy/
 from dataaccess.sqlite.models import Publisher, Book, Author
 
 
@@ -191,6 +189,7 @@ def main():
 
     engine = create_engine(f"sqlite:///author_book_publisher.db")
     # engine = create_engine(f"sqlite:///")
+    # engine = create_engine('sqlite:///:memory:', echo=True)
     Session = sessionmaker()
 
     Session.configure(bind=engine)

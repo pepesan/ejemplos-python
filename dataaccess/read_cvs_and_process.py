@@ -1,5 +1,6 @@
 import pandas as pd
 from treelib import Node, Tree
+#referencia: https://realpython.com/python-sqlite-sqlalchemy/
 
 
 def get_data(filepath):
