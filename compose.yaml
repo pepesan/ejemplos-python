@@ -1,0 +1,8 @@
+services:
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: jupyter-notebook
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
